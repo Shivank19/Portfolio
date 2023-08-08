@@ -12,6 +12,13 @@
   margin-top: 2rem;
 }
 
+.p-text-about {
+  font-weight: 500;
+  color: var(--gray-color);
+  width: 70%;
+  text-align: justify;
+  margin-top: 2rem;
+}
 .app__profiles-item {
   width: 190px;
   display: flex;
@@ -27,7 +34,7 @@
     object-fit: cover;
   }
 
-  p{
+  p {
     text-align: justify;
   }
 
@@ -35,8 +42,8 @@
     width: 370px;
     margin: 2rem 4rem;
 
-    img{
-        height: 320px;
+    img {
+      height: 320px;
     }
   }
 }

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 import { AppWrap } from '../../wrapper';
 import { images } from '../../constants';
+import Resume from '../../assets/Resume/Shivank Sapra - Resume.pdf';
 import './Header.scss';
 
 const scaleVariants = {
@@ -37,6 +38,16 @@ const Header = () => {
             <p className='p-text'>Software Engineer</p>
             <p className='p-text'>Machine Learning Enthusiast</p>
           </div>
+
+          <a
+            href={Resume}
+            download='Shivank Sapra - Resume'
+            target='_blank'
+            rel='noreferrer'
+            className='tag-cmp app__flex dl-btn'
+          >
+            <p className='p-text'>Resume</p>
+          </a>
         </div>
       </motion.div>
 

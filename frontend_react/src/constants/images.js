@@ -10,6 +10,7 @@ import git from '../assets/git.png';
 import graphql from '../assets/graphql.png';
 import html from '../assets/html.png';
 import javascript from '../assets/javascript.png';
+import linkedin from '../assets/linkedin.png';
 import ml from '../assets/ml.png';
 import mu5 from '../assets/mu5.png';
 import node from '../assets/node.png';
@@ -52,6 +53,7 @@ export default {
   graphql,
   html,
   javascript,
+  linkedin,
   ml,
   mu5,
   node,

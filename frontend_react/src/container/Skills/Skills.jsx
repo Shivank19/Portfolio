@@ -72,7 +72,6 @@ const Skills = () => {
                       id={work.name}
                       effect='solid'
                       arrowColor='#fff'
-                      className='skills-tooltip'
                     />
                   </>
                 ))}

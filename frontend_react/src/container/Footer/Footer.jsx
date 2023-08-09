@@ -40,7 +40,7 @@ export const Footer = () => {
 
   return (
     <>
-      <h2 className='head-text'>Take a Coffee ☕ & Chat with Me 👋🏼</h2>
+      <h2 className='head-text'>Connect with Me 👋🏼</h2>
 
       <div className='app__footer-cards'>
         <div className='app__footer-card'>
@@ -55,10 +55,25 @@ export const Footer = () => {
             +91 7011672108
           </a>
         </div>
+
+        <div className='app__footer-card'>
+          <img src={images.linkedin} alt='linkedin' />
+          <a
+            href='https://www.linkedin.com/in/shivank-sapra/'
+            target='_blank'
+            rel='noreferrer'
+            className='p-text'
+          >
+            Shivank Sapra
+          </a>
+        </div>
       </div>
 
       {!isFormSubmitted ? (
         <div className='app__footer-form app__flex'>
+          <h2 className='head-text' style={{ marginTop: '10px' }}>
+            Send a Message 💬
+          </h2>
           <div className='app__flex'>
             <input
               className='p-text'

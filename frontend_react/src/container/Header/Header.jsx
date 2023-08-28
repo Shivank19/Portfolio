@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 
 import { AppWrap } from '../../wrapper';
 import { images } from '../../constants';
-import Resume from '../../assets/Resume/Shivank Sapra - Resume.pdf';
 import './Header.scss';
 
 const scaleVariants = {
@@ -40,8 +39,7 @@ const Header = () => {
           </div>
 
           <a
-            href={Resume}
-            download='Shivank Sapra - Resume'
+            href='https://drive.google.com/file/d/1OQtLG3uI27hK-ocnMsSXlx0i6_SB0RqG/view?usp=sharing'
             target='_blank'
             rel='noreferrer'
             className='tag-cmp app__flex dl-btn'

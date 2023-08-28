@@ -1,5 +1,4 @@
 import React from 'react';
-import Resume from '../assets/Resume/Shivank Sapra - Resume.pdf';
 
 import {
   BsInstagram,
@@ -15,8 +14,7 @@ const SocialMedia = () => {
     <div className='app__social'>
       <div style={{ cursor: 'pointer' }}>
         <a
-          href={Resume}
-          download='Shivank Sapra - Resume'
+          href='https://drive.google.com/file/d/1OQtLG3uI27hK-ocnMsSXlx0i6_SB0RqG/view?usp=sharing'
           target={'_blank'}
           rel='noreferrer'
         >

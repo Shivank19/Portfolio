@@ -13,7 +13,7 @@ const Skills = () => {
 
   useEffect(() => {
     const query = '*[_type == "experiences"]';
-    const skillsQuery = '*[_type == "skills"]';
+    const skillsQuery = '*[_type == "skills"] | order(_createdAt asc)';
 
     client.fetch(query).then((data) => {
       setExperiences(data);
@@ -68,11 +68,7 @@ const Skills = () => {
                       <h4 className='bold-text'>{work.name}</h4>
                       <p className='p-text'>{work.company}</p>
                     </motion.div>
-                    <Tooltip
-                      id={work.name}
-                      effect='solid'
-                      arrowColor='#fff'
-                    />
+                    <Tooltip id={work.name} effect='solid' arrowColor='#fff' />
                   </>
                 ))}
               </motion.div>

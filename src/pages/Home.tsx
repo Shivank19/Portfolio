@@ -1,4 +1,5 @@
 import Hero from '../components/Hero';
+import About from '../components/About';
 
 const Home = () => {
   return (
@@ -8,7 +9,7 @@ const Home = () => {
     // </div>
     <>
       <Hero />
-      {/* Next sections will go here */}
+      <About />
     </>
   );
 };

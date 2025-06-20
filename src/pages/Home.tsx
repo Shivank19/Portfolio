@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import SectionNav from '../components/SectionNav';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Projects from '../components/Projects';
@@ -150,7 +151,7 @@ const Home = () => {
       <section id='section-2' className='snap-section'>
         <Projects />
       </section>
-
+      <SectionNav />
       {/* <section id="section-3" className="snap-section">
         <Experience />
       </section> */}

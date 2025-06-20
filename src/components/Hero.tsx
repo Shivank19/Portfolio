@@ -12,7 +12,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Hey, I'm Zero<span className='cursor'>_</span>
+          Hey, I'm Zeo<span className='cursor'>_</span>
         </motion.h1>
       </Parallax>
 

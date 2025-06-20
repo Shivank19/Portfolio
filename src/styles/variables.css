@@ -1,9 +1,13 @@
 :root {
   --bg-color: #0a0a0a;
+
   --text-color: #e0e0e0;
   --accent-color: #8f43ee;
   --highlight-color: #00ffaa;
-
+  --nav-bg: rgba(20, 20, 20, 0.95);
+  /* --accent-color: #a384f3; */
+  /* --highlight-color: #00ffd5; */
+  /* --text-color: #e0e0e0; */
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }

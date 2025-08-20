@@ -1,0 +1,97 @@
+.section-nav-container {
+  position: fixed;
+  top: 50%;
+  right: 3rem;
+  transform: translateY(-50%);
+  width: clamp(16px, 2vw, 24px);
+  transition: width 0.45s ease-in-out;
+  z-index: 1000;
+}
+
+.section-nav-container.expanded {
+  width: clamp(90px, 7vw, 100px);
+}
+
+.section-nav-inner {
+  background: none;
+  transition: all 0.45s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 4vh, 2.5rem);
+}
+
+.section-nav-container.expanded .section-nav-inner {
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 0 20px rgba(163, 132, 243, 0.25);
+  border-radius: 48px;
+  padding: clamp(2rem, 4vh, 3rem) clamp(0.8rem, 1vw, 1.2rem);
+  height: 75vh;
+  justify-content: space-between;
+}
+
+.nav-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.85;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-item:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.nav-dot {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 5px rgba(163, 132, 243, 0.3));
+  transition: all 0.3s ease;
+}
+
+.nav-dot:hover {
+  transform: scale(1.15);
+}
+
+.nav-item.active .nav-dot {
+  color: var(--highlight-color);
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px var(--highlight-color));
+}
+
+.dot-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.dot-indicator.active {
+  background-color: var(--highlight-color);
+  box-shadow: 0 0 6px rgba(0, 255, 213, 0.5);
+  transform: scale(1.2);
+}
+
+.nav-label {
+  font-size: clamp(0.7rem, 0.9vw, 0.9rem);
+  color: #ccc;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.section-nav-container.expanded .nav-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-item.fixed {
+  margin-top: auto;
+  margin-bottom: clamp(1rem, 2vh, 1.5rem);
+}

@@ -43,3 +43,4 @@ Thumbs.db
 # Optional - Cache
 .cache/
 
+src/backup

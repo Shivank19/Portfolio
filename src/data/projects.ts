@@ -1,159 +1,353 @@
-import gen1 from '../assets/gen1.jpg';
-import spoton from '../assets/spoton1.png';
-import rlTraffic from '../assets/traffic1.png';
-import med from '../assets/medimate.png';
-import viz from '../assets/viz.png';
-import nlp_fin from '../assets/nlp_fin.png';
+export type ProjectDetails = {
+  overview: string;
+  problem: string;
+  approach: string[];
+  outcomes: string[];
+  learnings: string[];
+  results?: { label: string; value: string }[];
+};
 
 export type Project = {
   slug: string;
   title: string;
-  description: string;
-  summaryLines: [string, string];
-  image: string;
-  tags: string[];
+  summary: string;
+  year: string;
+  domain: "Finance" | "Biotech" | "ML" | "Systems";
+  tech: string[];
   featured: boolean;
-  liveLink: string;
-  paperLink: string;
-  codeLink: string;
-  details: {
-    overview: string;
-    approach: string;
-    outcome: string;
-    learnings: string;
-  };
+  links?: { label: string; href: string }[];
+  details?: ProjectDetails;
 };
 
 export const projects: Project[] = [
   {
-    slug: 'linguistic-precursors-financial-restatements',
-    title: 'Linguistic Precursors to Financial Restatements',
-    description: 'An NLP research project studying whether subtle language patterns in earnings calls can signal future financial restatements before they become public.',
-    summaryLines: [
-      'An NLP research project studying whether subtle language patterns in earnings calls can signal future financial restatements.',
-      'The work combines financial text analysis with explainable modeling to surface early warning signals before disclosure.',
+    slug: "financial-restatements-nlp",
+    title: "Linguistic Precursors to Financial Restatements",
+    summary:
+      "NLP research on whether earnings-call language can signal future financial restatements before they become public.",
+    year: "Recent",
+    domain: "Finance",
+    tech: [
+      "Python",
+      "NLP",
+      "FinBERT",
+      "Longformer",
+      "LLM Prompting",
+      "SHAP",
+      "Integrated Gradients",
     ],
-    image: nlp_fin,
-    tags: ['Python', 'NLP', 'Financial Analysis', 'Explainable AI'],
     featured: true,
-    liveLink: '#',
-    paperLink: 'https://drive.google.com/file/d/1slQYcuF04iPAdpiR4km4Vg5OAaVD-A-a/view?usp=drive_link',
-    codeLink: 'https://github.com/Shivank19/CSCI5541-Final-Project',
     details: {
-      overview: 'This project explored whether companies that later issue financial restatements show measurable linguistic differences in earnings-call language before those restatements become public. The goal was to turn noisy executive and analyst communication into signals that could support earlier risk assessment.',
-      approach: 'I treated the transcripts as both financial documents and language artifacts, extracting textual features, comparing restatement and non-restatement groups, and using interpretable NLP methods to understand which cues mattered. The analysis emphasized explainability so the results could be read as evidence rather than a black-box prediction.',
-      outcome: 'The project produced a research workflow that connected earnings-call language to potential restatement risk and documented the strongest language patterns in a paper-style report. It also gave me a reusable structure for combining domain data, NLP features, and model interpretation.',
-      learnings: 'I learned how important careful framing is when applying machine learning to high-stakes financial data. The biggest lesson was that interpretability, dataset construction, and honest limitation-setting are just as important as predictive performance.',
+      overview:
+        "A research-oriented NLP project investigating whether subtle linguistic patterns in corporate earnings calls can signal future financial restatements before they become public.",
+      problem:
+        "Financial restatements are often revealed after investors, analysts, and regulators have already relied on inaccurate reporting. The project asks whether management language and analyst exchanges contain earlier warning signals.",
+      approach: [
+        "Built a benchmark dataset linking SEC Form 8-K restatement filings to earnings call transcripts.",
+        "Designed a transcript segmentation pipeline to separate prepared executive remarks from analyst Q&A.",
+        "Evaluated lexicon baselines, domain-specific transformer models, and LLM prompting approaches.",
+        "Applied SHAP and integrated gradients to interpret which language patterns influenced predictions.",
+      ],
+      outcomes: [
+        "Compared scripted and unscripted transcript segments as separate predictive signals.",
+        "Created an explainable modeling workflow for financial text classification.",
+        "Connected model predictions back to interpretable language patterns instead of treating outputs as black boxes.",
+      ],
+      learnings: [
+        "Segmentation quality matters as much as model choice in transcript analysis.",
+        "Explainability is essential when modeling high-stakes financial language.",
+        "Domain-specific models still need careful baselines to be meaningful.",
+      ],
+      results: [
+        { label: "Source filings", value: "8-K" },
+        { label: "Transcript views", value: "2" },
+        { label: "Explainability", value: "SHAP + IG" },
+      ],
     },
   },
   {
-    slug: 'celiac-disease-gut-microbiome',
-    title: 'Analysis of Celiac Disease Gut Microbiome',
-    description: 'Standardized Pipeline and Analysis of Celiac Disease Gut Microbiomes Using QIIME 2.',
-    summaryLines: [
-      'A microbiome analysis project using QIIME 2 to study gut microbial patterns associated with celiac disease.',
-      'The project focused on building a standardized, reproducible pipeline for statistical comparison and interpretation.',
-    ],
-    image: gen1,
-    tags: ['QIIME 2', 'Statistical Analysis'],
+    slug: "medirag-medical-literature",
+    title: "MediRAG: A RAG System for Medical Literature",
+    summary:
+      "An end-to-end RAG pipeline over PubMed abstracts on mRNA cancer vaccines with source-grounded Llama 3 answers.",
+    year: "Recent",
+    domain: "Biotech",
+    tech: ["Python", "RAG", "ChromaDB", "Llama 3", "Sentence Transformers", "PubMed"],
     featured: true,
-    liveLink: '#',
-    paperLink: 'https://drive.google.com/file/d/1jO7yjOp-GHDYXxyduWchtFz4_PnwQe1a/view?usp=sharing',
-    codeLink: 'https://github.com/nicholashinds/csci5481-final',
     details: {
-      overview: 'This project analyzed gut microbiome data related to celiac disease, with an emphasis on making the workflow consistent, inspectable, and scientifically grounded. The central aim was to compare microbial communities while preserving the rigor needed for biological data analysis.',
-      approach: 'The work used QIIME 2 to process microbiome data through a standardized pipeline, including quality control, taxonomic analysis, and statistical comparison. I focused on reproducibility and clear reporting so that each analytical step could be traced back to the data and methods.',
-      outcome: 'The final result was a structured microbiome analysis and report describing observed community-level patterns and statistically relevant findings. The pipeline made it easier to reason about biological signal without losing sight of preprocessing choices.',
-      learnings: 'I learned how sensitive biological analysis can be to pipeline design, metadata quality, and interpretation discipline. The project sharpened my ability to work with domain-specific tooling and explain computational findings in a scientific context.',
+      overview:
+        "A retrieval-augmented generation system built over 200 peer-reviewed PubMed abstracts on mRNA cancer vaccines using Llama 3 and ChromaDB.",
+      problem:
+        "Medical literature QA needs answers that stay grounded in source material, especially when questions move between core domain topics and off-domain boundary cases.",
+      approach: [
+        "Built full ingestion for parsing, chunking, and local vector indexing of PubMed abstracts.",
+        "Implemented retrieval with sentence-transformers embeddings, cosine similarity search, and deduplication.",
+        "Engineered a RAG prompt with source-grounding constraints and low-temperature Llama 3 generation.",
+        "Evaluated the system across 30 core domain and off-domain boundary questions.",
+      ],
+      outcomes: [
+        "Achieved 0.879 answer relevancy and 0.797 groundedness on core-domain questions.",
+        "Achieved 0.779 answer relevancy and 0.782 groundedness overall.",
+        "Reduced hallucination risk through source-grounded prompting and low-temperature generation.",
+      ],
+      learnings: [
+        "Retrieval quality and deduplication strongly shape downstream answer faithfulness.",
+        "Boundary-case evaluation is necessary for judging whether a RAG system knows when evidence is thin.",
+        "Prompt constraints are most useful when paired with measurable groundedness checks.",
+      ],
+      results: [
+        { label: "Abstracts", value: "200" },
+        { label: "Core relevancy", value: "0.879" },
+        { label: "Core groundedness", value: "0.797" },
+      ],
     },
   },
   {
-    slug: 'spoton',
-    title: 'SpotOn',
-    description: 'A real-time scoring pipeline for a dexterity-based card and dice game called Rhubarb Dice Game.',
-    summaryLines: [
-      'A computer vision system for real-time scoring in a dexterity-based card and dice game.',
-      'SpotOn uses image processing and an interactive app layer to detect game state and reduce manual scoring friction.',
-    ],
-    image: spoton,
-    tags: ['Python', 'OpenCV', 'Streamlit'],
+    slug: "celiac-microbiome-qiime2",
+    title: "Standardized Analysis of Celiac Disease Gut Microbiomes",
+    summary:
+      "A reproducible QIIME2 pipeline for studying gut microbiome differences associated with celiac disease.",
+    year: "Recent",
+    domain: "Biotech",
+    tech: ["QIIME2", "DADA2", "SILVA", "UniFrac", "Bray-Curtis", "Faith's PD", "16S rRNA"],
     featured: true,
-    liveLink: '#',
-    paperLink: 'https://drive.google.com/file/d/1t6EvX4iXCk-v47tobKsJoU2QuMYy_DM-/view?usp=sharing',
-    codeLink: 'https://github.com/Stefhermann/cv5561-f25-team-spoton',
     details: {
-      overview: 'SpotOn was built to score the Rhubarb Dice Game automatically from visual input. The project turned a physical tabletop game into a computer vision problem where cards, dice, and spatial relationships needed to be detected reliably enough for real-time feedback.',
-      approach: 'The system combined OpenCV-based detection with a Streamlit interface so users could see the scoring pipeline in action. I worked through image preprocessing, object detection constraints, and game-rule translation to connect what the camera saw with meaningful score outputs.',
-      outcome: 'The project delivered a functional scoring prototype and a paper documenting the vision pipeline, its strengths, and its limitations. It showed how lightweight computer vision tools can support playful, physical interactions without requiring a heavy production system.',
-      learnings: 'I learned that real-world vision projects are shaped by lighting, camera angle, object variation, and interface feedback as much as algorithms. The experience made me more practical about testing under messy conditions and designing for quick iteration.',
+      overview:
+        "A biomedical data analysis project studying gut microbiome differences associated with celiac disease using 16S rRNA sequencing data.",
+      problem:
+        "Microbiome studies need reproducible preprocessing and phylogeny-aware interpretation to distinguish taxonomic richness from deeper lineage-level community changes.",
+      approach: [
+        "Designed and executed an end-to-end 16S rRNA microbiome analysis pipeline using QIIME2.",
+        "Performed quality control and denoising using DADA2.",
+        "Assigned taxonomy with the SILVA database.",
+        "Built phylogenetic trees and performed alpha and beta diversity analyses.",
+      ],
+      outcomes: [
+        "Produced a standardized workflow for celiac disease gut microbiome analysis.",
+        "Interpreted results showing preserved taxonomic richness alongside reduced phylogenetic diversity.",
+        "Identified evidence of lineage-level restructuring in celiac samples.",
+      ],
+      learnings: [
+        "Taxonomic and phylogenetic diversity can tell different biological stories.",
+        "A reproducible pipeline makes interpretation easier to audit.",
+        "Preprocessing decisions carry through every downstream statistical result.",
+      ],
+      results: [
+        { label: "Sequencing", value: "16S" },
+        { label: "Pipeline", value: "QIIME2" },
+        { label: "Diversity", value: "Alpha/Beta" },
+      ],
     },
   },
   {
-    slug: 'sound-of-each-decade',
-    title: 'The Sound of Each Decade',
-    description: 'An interactive data storytelling project exploring how popular music changed from 1960 to 2020, focusing on trends in audio features.',
-    summaryLines: [
-      'An interactive data storytelling project about how popular music changed from 1960 to 2020.',
-      'The experience uses visual analytics to reveal decade-level shifts in audio features and listening trends.',
+    slug: "rhubarb-dice-scoring",
+    title: "Real-Time Scoring for Rhubarb Dice Game",
+    summary:
+      "A computer vision system for detecting, tracking, and scoring cards and colored dice in a physical game setting.",
+    year: "Recent",
+    domain: "ML",
+    tech: [
+      "Python",
+      "OpenCV",
+      "YOLOv8",
+      "YOLO-CLS",
+      "Object Detection",
+      "Kalman Filtering",
+      "K-Means",
     ],
-    image: viz,
-    tags: ['Python', 'React', 'D3.js', 'Visual Storytelling', 'Data Visualization'],
     featured: true,
-    liveLink: 'https://shivank19.github.io/CSCI5609_Final_Project/',
-    paperLink: 'https://drive.google.com/file/d/1JuvtrlvQd1O59fQjGM7iJO3IBRAdnCzH/view?usp=sharing',
-    codeLink: 'https://github.com/Shivank19/CSCI5609_Final_Project/tree/final-website',
     details: {
-      overview: 'This project explored how the sound of popular music evolved across decades, using audio features as the backbone for an interactive narrative. The goal was to make broad historical trends feel explorable rather than buried in static charts.',
-      approach: 'I combined Python-based data preparation with a React and D3.js frontend, shaping the dataset into views that supported comparison across time. The design emphasized guided discovery, letting users move through decade-level changes while still inspecting specific feature patterns.',
-      outcome: 'The final site presented a polished visual story with interactive charts and supporting analysis. It translated a large music dataset into a more approachable experience for understanding how popular sound has shifted over time.',
-      learnings: 'I learned how much data visualization depends on sequencing, interaction design, and restraint. The project strengthened my ability to move from raw data to a narrative interface that supports both exploration and explanation.',
+      overview:
+        "A real-time computer vision system for detecting, tracking, and scoring cards and colored dice under rotation, occlusion, motion blur, and small-object detection challenges.",
+      problem:
+        "Physical tabletop scoring is visually messy: dice are small, cards rotate, pieces overlap, and frame-by-frame detections can flicker enough to make scoring unreliable.",
+      approach: [
+        "Built an end-to-end vision pipeline for detecting cards and dice in real time.",
+        "Used YOLOv8 for object detection and YOLO-CLS for dice value classification.",
+        "Applied K-Means clustering for dice color classification.",
+        "Implemented tracking and association using IoU, centroid matching, Kalman filtering, EMA, and overlap-based methods.",
+        "Replaced event-based scoring with frame-level snapshot scoring to improve stability.",
+      ],
+      outcomes: [
+        "Stabilized game-state detection across noisy visual conditions.",
+        "Combined object detection, classification, color clustering, and tracking into one scoring loop.",
+        "Improved scoring reliability by grounding scores in frame-level snapshots.",
+      ],
+      learnings: [
+        "A good tracking layer can matter more than a slightly better detector.",
+        "Small-object classification benefits from separate value and color handling.",
+        "Snapshot scoring is easier to reason about than event streams when detections are noisy.",
+      ],
+      results: [
+        { label: "Detection", value: "YOLOv8" },
+        { label: "Tracking", value: "Kalman" },
+        { label: "Scoring", value: "Real-time" },
+      ],
     },
   },
   {
-    slug: 'adaptive-traffic-congestion-control',
-    title: 'Adaptive Traffic Congestion Control',
-    description: 'A reinforcement learning system that dynamically adjusts traffic signal timings to reduce urban congestion and improve traffic flow.',
-    summaryLines: [
-      'A reinforcement learning project that adapts traffic signal timing to improve urban traffic flow.',
-      'The system models congestion as a sequential decision problem and learns policies for signal control.',
-    ],
-    image: rlTraffic,
-    tags: ['Python', 'Reinforcement Learning'],
+    slug: "sound-of-each-decade",
+    title: "The Sound of Each Decade",
+    summary:
+      "An interactive data story on how popular music changed from 1960 to 2020 across Spotify audio features.",
+    year: "Recent",
+    domain: "ML",
+    tech: ["Python", "Pandas", "NumPy", "React", "D3.js", "Data Visualization", "EDA"],
     featured: false,
-    liveLink: 'https://www.youtube.com/watch?v=xr_JjAukCBI',
-    paperLink: '#',
-    codeLink: '#',
     details: {
-      overview: 'This project framed traffic-signal control as a reinforcement learning problem, where an agent learns how to adjust signal timing based on traffic conditions. The broader aim was to explore how adaptive policies can reduce congestion compared with static timing rules.',
-      approach: 'I modeled the traffic environment around state, action, and reward choices that reflect congestion and flow. The implementation focused on training and evaluating policies that could respond dynamically as vehicle patterns changed.',
-      outcome: 'The project produced a working reinforcement learning demonstration and helped show how learned signal policies can improve responsiveness in simulated traffic settings. It also highlighted the practical gap between simulation success and real-world deployment requirements.',
-      learnings: 'I learned how much reinforcement learning depends on reward design, environment assumptions, and evaluation discipline. The project made me more attentive to whether an agent is learning a genuinely useful behavior or simply exploiting the structure of a simulation.',
+      overview:
+        "An interactive data storytelling project exploring how popular music changed from 1960 to 2020, including the contrast between increasingly danceable music and sadder emotional tone.",
+      problem:
+        "Large music datasets can hide long-term cultural patterns unless numerical audio features are cleaned, grouped, and presented as an explorable narrative.",
+      approach: [
+        "Analyzed more than 160,000 Spotify tracks across seven decades.",
+        "Cleaned and engineered features across 13 numerical musical attributes.",
+        "Compared long-term trends in valence, loudness, acousticness, and danceability.",
+        "Built an interactive React and D3.js narrative visualization.",
+      ],
+      outcomes: [
+        "Surfaced decade-level shifts in musical mood, production, and energy.",
+        "Built a visual story around the tension between danceability and emotional tone.",
+        "Turned exploratory audio analysis into an interactive reader experience.",
+      ],
+      learnings: [
+        "Data storytelling works best when each chart earns its place in the narrative.",
+        "Feature engineering decisions strongly shape cultural interpretation.",
+        "Interactivity is most useful when it lets readers compare, not just browse.",
+      ],
+      results: [
+        { label: "Tracks", value: "160K+" },
+        { label: "Decades", value: "7" },
+        { label: "Features", value: "13" },
+      ],
     },
   },
   {
-    slug: 'medimate',
-    title: 'MediMate',
-    description: 'An OCR-powered medication tracking system that converts real prescriptions into structured, actionable schedules with analytics and offers smart inventory tracking and reminders.',
-    summaryLines: [
-      'An OCR-powered medication tracking app that turns prescription text into structured schedules.',
-      'MediMate combines reminders, analytics, and inventory tracking to make medication routines easier to manage.',
-    ],
-    image: med,
-    tags: ['Vue.js', 'FireBase', 'OCR'],
+    slug: "adaptive-traffic-control",
+    title: "Adaptive Traffic Congestion Control",
+    summary:
+      "Deep Q-learning for dynamically optimizing traffic light timings at a simulated four-way intersection.",
+    year: "Recent",
+    domain: "Systems",
+    tech: ["Python", "Reinforcement Learning", "Deep Q-Learning", "SUMO", "Deep Neural Networks"],
     featured: false,
-    liveLink: 'https://project2-e9097.web.app',
-    paperLink: '#',
-    codeLink: 'https://github.com/csci5117f25/project-2-four-loops-1',
     details: {
-      overview: 'MediMate was designed to help users turn real prescription information into manageable medication schedules. The project focused on reducing the friction between receiving medication instructions and actually following them day to day.',
-      approach: 'The application used OCR to extract prescription details, then organized that information into reminders, tracking views, analytics, and inventory signals. I worked on the product flow so scanned information could become useful actions rather than just captured text.',
-      outcome: 'The result was a deployed web application that supports medication scheduling, smart reminders, and inventory awareness. It demonstrated how OCR and a thoughtful interface can turn a messy real-world input into a practical personal health workflow.',
-      learnings: 'I learned that health-adjacent tools need especially clear flows, conservative assumptions, and careful error handling. The project reinforced the importance of making automation visible and editable when users are relying on it for daily routines.',
+      overview:
+        "A reinforcement learning project focused on dynamically optimizing traffic light timings at a four-way intersection using simulated traffic conditions.",
+      problem:
+        "Fixed signal timings cannot adapt to real-time density changes, causing avoidable congestion when traffic patterns shift.",
+      approach: [
+        "Used Deep Q-Learning to adjust traffic signal timings dynamically.",
+        "Modeled lane-level traffic flow and intersection configurations using SUMO.",
+        "Enabled decision-making across four predefined traffic light phases.",
+        "Built a deep neural network to select traffic control actions based on traffic conditions.",
+      ],
+      outcomes: [
+        "Created an adaptive signal-control system driven by simulated density.",
+        "Connected lane-level observations to sequential decision-making.",
+        "Explored reinforcement learning as a tool for urban traffic optimization.",
+      ],
+      learnings: [
+        "Simulation design defines the quality of the control policy.",
+        "Traffic phases need clear constraints before an RL agent can behave usefully.",
+        "Reward shaping is central to congestion-control behavior.",
+      ],
+    },
+  },
+  {
+    slug: "image-super-resolution",
+    title: "Image Super-Resolution",
+    summary:
+      "An SRGAN-based deep learning project for generating sharper high-resolution images from low-resolution inputs.",
+    year: "Recent",
+    domain: "ML",
+    tech: ["Python", "GANs", "SRGAN", "Deep Learning", "Computer Vision", "Perceptual Loss"],
+    featured: false,
+    details: {
+      overview:
+        "A deep learning project focused on improving the resolution and visual quality of low-resolution images using a Super-Resolution Generative Adversarial Network.",
+      problem:
+        "Pixel-wise upscaling often produces blurry outputs because it optimizes for average reconstruction rather than perceptual sharpness.",
+      approach: [
+        "Implemented a Super-Resolution GAN for 4x image up-sampling.",
+        "Used perceptual loss based on features from a pre-trained deep neural network.",
+        "Trained the model to generate more realistic textures and visual detail.",
+      ],
+      outcomes: [
+        "Generated sharper high-resolution outputs from low-resolution images.",
+        "Explored the tradeoff between reconstruction accuracy and perceptual realism.",
+        "Implemented a complete GAN training workflow for computer vision enhancement.",
+      ],
+      learnings: [
+        "Perceptual quality is not captured by pixel loss alone.",
+        "GAN training benefits from disciplined visual checks throughout training.",
+        "Texture recovery is as much about loss design as architecture.",
+      ],
+    },
+  },
+  {
+    slug: "clashpoint-debating-forum",
+    title: "ClashPoint - Online Debating Forum",
+    summary:
+      "A full-stack debating platform with threaded arguments, voting, moderation, and real-time toxicity detection.",
+    year: "Recent",
+    domain: "Systems",
+    tech: ["Flask", "PostgreSQL", "TensorFlow.js", "JavaScript", "AJAX", "Content Moderation"],
+    featured: false,
+    details: {
+      overview:
+        "A full-stack online debating platform that supports real-time discussion, argument posting, replies, voting, and content moderation.",
+      problem:
+        "Online debate tools need both rich threaded discussion mechanics and moderation safeguards to keep conversations usable.",
+      approach: [
+        "Developed the main debate page for viewing, posting, replying to, editing, and deleting arguments.",
+        "Implemented nested threaded discussions with recursive AJAX-based rendering.",
+        "Added voting and server-side score computation.",
+        "Integrated real-time toxicity moderation using TensorFlow.js to prevent offensive content from being posted.",
+      ],
+      outcomes: [
+        "Built a complete debate workflow from argument creation through moderation.",
+        "Supported nested discussions without full-page reloads.",
+        "Added automated client-side toxicity checks before submission.",
+      ],
+      learnings: [
+        "Threaded interfaces need careful recursive rendering and state handling.",
+        "Moderation belongs in the product flow, not as an afterthought.",
+        "Server-side score computation keeps voting behavior consistent.",
+      ],
+    },
+  },
+  {
+    slug: "medimate-medication-tracker",
+    title: "MediMate - Medication Tracking Web App",
+    summary:
+      "A medication management app for prescription scanning, schedules, dose tracking, inventory, and reminders.",
+    year: "Recent",
+    domain: "Systems",
+    tech: ["Vue.js", "Firebase", "Tesseract.js", "OCR", "JavaScript", "Medication Tracking"],
+    featured: false,
+    details: {
+      overview:
+        "A full-stack medication management application designed to help users scan prescriptions, schedule medications, track doses, monitor inventory, and receive reminders.",
+      problem:
+        "Medication tracking needs flexible schedules, reliable logging, and inventory awareness while staying simple enough for repeated daily use.",
+      approach: [
+        "Built OCR-based prescription scanning using Tesseract.js.",
+        "Designed medication add and edit workflows with flexible scheduling options.",
+        "Implemented real-time dose tracking, inventory tracking, and reminder logic.",
+        "Developed dynamic dose logging and undo behavior with transactional consistency.",
+        "Added fallback scheduling logic for medications without specified times.",
+      ],
+      outcomes: [
+        "Created a structured medication tracking workflow from scan to reminder.",
+        "Supported flexible dose schedules and inventory-aware state updates.",
+        "Improved reliability with transactional dose logging and undo behavior.",
+      ],
+      learnings: [
+        "Health-adjacent workflows need forgiving defaults and clear state transitions.",
+        "OCR helps most when paired with easy correction paths.",
+        "Undo behavior is a core reliability feature for tracking apps.",
+      ],
     },
   },
 ];
-
-export const projectTags = ['All', ...Array.from(new Set(projects.flatMap((project) => project.tags)))];
-
-export const getProjectBySlug = (slug: string | undefined) =>
-  projects.find((project) => project.slug === slug);

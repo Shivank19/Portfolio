@@ -1,173 +1,115 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ExternalLink, Github, Zap, FileText } from 'lucide-react';
+import { ArrowRight, ExternalLink, FileText, Github, Zap } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
-import gen1 from '../assets/gen1.jpg';
-import spoton from '../assets/spoton1.png';
-import rlTraffic from '../assets/traffic1.png';
-import med from '../assets/medimate.png'
+import { projects } from '../data/projects';
 
 const ProjectsSection: React.FC = () => {
-  const [scrollY, setScrollY] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const projects = [
-    {
-      title: 'SpotOn',
-      description: 'A real-time scoring pipeline for a dexterity-based card and dice game called Rhubarb Dice Game.',
-      image: spoton,
-      tags: ['Python', 'OpenCV', 'Streamlit'],
-      featured: true,
-      liveLink: '#',
-      paperLink: 'https://drive.google.com/file/d/1t6EvX4iXCk-v47tobKsJoU2QuMYy_DM-/view?usp=sharing',
-      codeLink: 'https://github.com/Stefhermann/cv5561-f25-team-spoton',
-    },
-    {
-      title: 'Analysis of Celiac Disease Gut Microbiome',
-      description: 'Standardized Pipeline and Analysis of Celiac Disease Gut Microbiomes Using QIIME 2.',
-      image: gen1,
-      tags: ['QIIME 2', 'Statistical Analysis'],
-      featured: true,
-      liveLink: '#',
-      paperLink: 'https://drive.google.com/file/d/1jO7yjOp-GHDYXxyduWchtFz4_PnwQe1a/view?usp=sharing',
-      codeLink: 'https://github.com/nicholashinds/csci5481-final',
-    },
-    {
-      title: 'Adaptive Traffic Congestion Control',
-      description: '',
-      image: rlTraffic,
-      tags: ['Python', 'Reinforcement Learning'],
-      featured: true,
-      liveLink: 'https://www.youtube.com/watch?v=xr_JjAukCBI',
-      paperLink: '#',
-      codeLink: '#',
-    },
-    {
-      title: 'MediMate',
-      description: 'An OCR-powered medication tracking system that converts real prescriptions into structured, actionable schedules with analytics and offers smart inventory tracking and reminders.',
-      image: med,
-      tags: ['Vue.js', 'FireBase', 'OCR'],
-      featured: true,
-      liveLink: 'https://project2-e9097.web.app',
-      paperLink: '#',
-      codeLink: 'https://github.com/csci5117f25/project-2-four-loops-1',
-    },
-  ];
-
   return (
-    <section id="projects" className="min-h-screen py-20 px-4 bg-gradient-to-b from-app-bg-primary to-primary-900/20 relative overflow-hidden">
-      {/* Subtle background elements */}
-      <div
-        className="absolute top-16 right-20 w-36 h-36 rounded-full bg-gradient-to-br from-highlight-600/8 to-primary-600/8 blur-2xl"
-        style={{
-          transform: `translateY(${scrollY * 0.01}px)`,
-        }}
-      />
-      <div
-        className="absolute bottom-32 left-16 w-28 h-28 rounded-full bg-gradient-to-br from-accent-600/10 to-highlight-600/10 blur-xl"
-        style={{
-          transform: `translateY(${scrollY * -0.008}px)`,
-        }}
-      />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section id="projects" className="min-h-screen bg-transparent px-4 py-20">
+      <div className="relative z-10 mx-auto max-w-6xl">
         <ScrollReveal direction="up" delay={200}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-gradient-primary-accent">
-            Featured Projects
-          </h2>
+          <div className="mb-10 border-b border-app-border-primary pb-8">
+            <p className="mb-3 font-mono text-xs font-bold uppercase tracking-[0.14em] text-primary-600">
+              Selected work
+            </p>
+            <h2 className="text-5xl leading-none text-app-text-primary md:text-7xl">
+              Featured Projects
+            </h2>
+          </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <ScrollReveal key={index} direction={index % 2 === 0 ? 'left' : 'right'} delay={400 + index * 200}>
-              <div className={`
-                group relative overflow-hidden rounded-2xl bg-app-bg-secondary/60 backdrop-blur-sm
-                hover:bg-app-bg-secondary/80 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary
-                ${project.featured ? 'md:col-span-1' : ''}
-              `}>
-                <div className="aspect-video overflow-hidden">
+        <div className="grid gap-6 md:grid-cols-2">
+          {projects.filter((project) => project.featured).map((project, index) => (
+            <ScrollReveal key={project.slug} direction={index % 2 === 0 ? 'left' : 'right'} delay={400 + index * 160}>
+              <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-app-border-primary bg-app-bg-secondary shadow-[0_22px_52px_rgba(35,35,51,0.06)] transition-all duration-300 hover:-translate-y-1 hover:border-app-border-accent">
+                <div className="relative aspect-[16/8] flex-shrink-0 overflow-hidden border-b border-app-border-primary bg-app-bg-tertiary">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-app-bg-primary via-app-bg-primary/60 to-transparent opacity-80"></div>
-                </div>
-
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent pointer-events-none" />
                   {project.featured && (
-                    <div className="absolute top-4 right-4">
-                      <Zap size={20} className="text-yellow-400" />
+                    <div className="absolute right-3 top-3 z-10 grid h-8 w-8 place-items-center rounded-full border border-white/45 bg-white/88 text-primary-600 shadow-lg">
+                      <Zap size={15} />
                     </div>
                   )}
+                </div>
 
-                  <div className="space-y-3">
-                    <h3 className="text-2xl font-bold text-app-text-secondary">{project.title}</h3>
-                    <p className="text-app-text-tertiary text-sm leading-relaxed">{project.description}</p>
+                <div className="flex flex-1 flex-col space-y-3 p-5">
+                  <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-primary-600">
+                    Featured
+                  </p>
+                  <h3 className="text-2xl leading-tight text-app-text-secondary">{project.title}</h3>
+                  <p className="text-sm leading-relaxed text-app-text-tertiary">{project.description}</p>
 
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag) => (
-                        <span key={tag} className="px-3 py-1 bg-primary-800/40 text-primary-300 rounded-full text-xs">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="tag-readable rounded-full px-2.5 py-1 text-[0.62rem] font-semibold">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                    <div className="flex space-x-4 pt-2">
-                      {project.liveLink && project.liveLink !== '#' && (
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-2 px-4 py-2 bg-primary-800 hover:bg-primary-900 rounded-lg transition-colors duration-300"
-                        >
-                          <ExternalLink size={16} />
-                          <span className="text-sm">Live Demo</span>
-                        </a>
-                      )}
+                  <div className="mt-auto flex flex-wrap gap-2 pt-2">
+                    <button
+                      onClick={() => navigate(`/projects/${project.slug}`)}
+                      className="btn-readable-primary flex items-center space-x-1.5 rounded-full px-3 py-1.5 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300"
+                    >
+                      <ArrowRight size={12} />
+                      <span>Details</span>
+                    </button>
 
-                      {project.paperLink && project.paperLink !== '#' && (
-                        <a
-                          href={project.paperLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-2 px-4 py-2 bg-primary-800 hover:bg-primary-900 rounded-lg transition-colors duration-300"
-                        >
-                          <FileText size={16} />
-                          <span className="text-sm">Paper</span>
-                        </a>
-                      )}
+                    {project.liveLink && project.liveLink !== '#' && (
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-readable-primary flex items-center space-x-1.5 rounded-full px-3 py-1.5 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] transition-colors duration-300"
+                      >
+                        <ExternalLink size={12} />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
 
-                      {project.codeLink && project.codeLink !== '#' && (
-                        <a
-                          href={project.codeLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-2 px-4 py-2 bg-app-bg-tertiary hover:bg-app-border-primary rounded-lg transition-colors duration-300"
-                        >
-                          <Github size={16} />
-                          <span className="text-sm">Code</span>
-                        </a>
-                      )}
-                    </div>
+                    {project.paperLink && project.paperLink !== '#' && (
+                      <a
+                        href={project.paperLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-readable-primary flex items-center space-x-1.5 rounded-full px-3 py-1.5 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] transition-colors duration-300"
+                      >
+                        <FileText size={12} />
+                        <span>Paper</span>
+                      </a>
+                    )}
+
+                    {project.codeLink && project.codeLink !== '#' && (
+                      <a
+                        href={project.codeLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-readable-surface flex items-center space-x-1.5 rounded-full px-3 py-1.5 font-mono text-[0.68rem] font-semibold uppercase tracking-[0.12em] transition-colors duration-300"
+                      >
+                        <Github size={12} />
+                        <span>Code</span>
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
+              </article>
             </ScrollReveal>
           ))}
         </div>
 
-        <ScrollReveal direction="up" delay={1200}>
-          <div className="text-center mt-12">
+        <ScrollReveal direction="up" delay={1000}>
+          <div className="mt-12 text-center">
             <button
               onClick={() => navigate('/projects')}
-              className="px-8 py-3 bg-gradient-primary-accent hover:from-primary-900 hover:to-accent-900 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary"
+              className="btn-readable-primary rounded-full px-6 py-3 font-mono text-xs font-semibold uppercase tracking-[0.12em] transition-all duration-300"
             >
               View All Projects
             </button>

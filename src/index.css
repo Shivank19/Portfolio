@@ -4,84 +4,114 @@
 
 @layer base {
   :root {
-    /* Primary Color System - Maroon / Burgundy */
-    --color-primary-50: 251 242 244;
-    --color-primary-100: 245 224 229;
-    --color-primary-200: 238 197 206;
-    --color-primary-300: 226 156 170;
-    --color-primary-400: 209 107 129;
-    --color-primary-500: 189 64 94;
-    --color-primary-600: 163 42 72;
-    --color-primary-700: 138 31 58;
-    --color-primary-800: 122 0 25;    /* UMN Maroon approx */
-    --color-primary-900: 99 23 47;
+    /* Primary Color System - Electric Indigo */
+    --color-primary-50: 238 242 255;
+    --color-primary-100: 224 231 255;
+    --color-primary-200: 199 210 254;
+    --color-primary-300: 165 180 252;
+    --color-primary-400: 129 140 248;
+    --color-primary-500: 99 102 241;
+    --color-primary-600: 79 70 229;
+    --color-primary-700: 67 56 202;
+    --color-primary-800: 55 48 163;
+    --color-primary-900: 49 46 129;
 
-    /* Accent Color System - Gold */
-    --color-accent-50: 254 252 232;
-    --color-accent-100: 255 249 194;
-    --color-accent-200: 255 240 135;
-    --color-accent-300: 255 224 77;
-    --color-accent-400: 255 204 51;   /* UMN Gold approx */
-    --color-accent-500: 250 191 7;
-    --color-accent-600: 217 154 0;
-    --color-accent-700: 173 114 3;
-    --color-accent-800: 140 90 11;
-    --color-accent-900: 118 74 15;
+    /* Accent Color System - Indigo Blue */
+    --color-accent-50: 239 246 255;
+    --color-accent-100: 219 234 254;
+    --color-accent-200: 191 219 254;
+    --color-accent-300: 147 197 253;
+    --color-accent-400: 96 165 250;
+    --color-accent-500: 59 130 246;
+    --color-accent-600: 37 99 235;
+    --color-accent-700: 29 78 216;
+    --color-accent-800: 30 64 175;
+    --color-accent-900: 30 58 138;
 
-    /* Highlight Color System - Bright Golden Yellow */
-    --color-highlight-50: 255 254 240;
-    --color-highlight-100: 255 251 214;
-    --color-highlight-200: 255 242 163;
-    --color-highlight-300: 255 227 92;
-    --color-highlight-400: 255 210 28;
-    --color-highlight-500: 245 189 2;
-    --color-highlight-600: 210 152 0;
-    --color-highlight-700: 170 113 0;
-    --color-highlight-800: 143 89 2;
-    --color-highlight-900: 120 72 2;
+    /* Highlight Color System - Ion Violet */
+    --color-highlight-50: 250 245 255;
+    --color-highlight-100: 243 232 255;
+    --color-highlight-200: 233 213 255;
+    --color-highlight-300: 216 180 254;
+    --color-highlight-400: 192 132 252;
+    --color-highlight-500: 168 85 247;
+    --color-highlight-600: 147 51 234;
+    --color-highlight-700: 126 34 206;
+    --color-highlight-800: 107 33 168;
+    --color-highlight-900: 88 28 135;
 
-    /* Background Color System - Deep Maroon / Warm Dark */
-    --color-bg-primary: 36 5 12;      /* Very dark maroon */
-    --color-bg-secondary: 56 10 20;   /* Slightly lighter */
-    --color-bg-tertiary: 79 16 30;    /* Lighter still */
-    --color-bg-overlay: 36 5 12;
-    --color-bg-card: 56 10 20;
-    --color-bg-input: 79 16 30;
+    /* Background Color System - Midnight Indigo */
+    --color-bg-primary: 6 8 26;
+    --color-bg-secondary: 11 15 40;
+    --color-bg-tertiary: 19 25 58;
+    --color-bg-overlay: 6 8 26;
+    --color-bg-card: 11 15 40;
+    --color-bg-input: 19 25 58;
 
     /* Text Color System */
-    --color-text-primary: 255 248 240;  /* Warm white */
-    --color-text-secondary: 255 224 178; /* Light Gold */
-    --color-text-tertiary: 230 180 140;  /* Muted Gold/Brown */
-    --color-text-muted: 180 130 110;     /* Muted reddish brown */
-    --color-text-inverse: 36 5 12;
+    --color-text-primary: 246 248 255;
+    --color-text-secondary: 215 221 244;
+    --color-text-tertiary: 164 174 211;
+    --color-text-muted: 111 123 166;
+    --color-text-inverse: 6 8 26;
 
     /* Border Colors */
-    --color-border-primary: 122 0 25;
-    --color-border-secondary: 79 16 30;
-    --color-border-accent: 255 204 51;
+    --color-border-primary: 48 58 128;
+    --color-border-secondary: 30 38 86;
+    --color-border-accent: 129 140 248;
 
     /* Shadow Colors */
-    --color-shadow-primary: 99 23 47;
-    --color-shadow-accent: 255 204 51;
-    --color-shadow-highlight: 255 224 77;
+    --color-shadow-primary: 79 70 229;
+    --color-shadow-accent: 37 99 235;
+    --color-shadow-highlight: 147 51 234;
   }
 
-  /* Dark theme variations (can be toggled) */
+  /* Dark theme restores the original indigo portfolio palette. */
   [data-theme="dark"] {
-    --color-bg-primary: 3 7 18;
-    --color-bg-secondary: 8 15 26;
-    --color-bg-tertiary: 15 23 42;
+    --color-bg-primary: 6 8 26;
+    --color-bg-secondary: 11 15 40;
+    --color-bg-tertiary: 19 25 58;
+    --color-bg-overlay: 6 8 26;
+    --color-bg-card: 11 15 40;
+    --color-bg-input: 19 25 58;
+
+    --color-text-primary: 246 248 255;
+    --color-text-secondary: 215 221 244;
+    --color-text-tertiary: 164 174 211;
+    --color-text-muted: 111 123 166;
+    --color-text-inverse: 6 8 26;
+
+    --color-border-primary: 48 58 128;
+    --color-border-secondary: 30 38 86;
+    --color-border-accent: 129 140 248;
+
+    --color-shadow-primary: 79 70 229;
+    --color-shadow-accent: 37 99 235;
+    --color-shadow-highlight: 147 51 234;
   }
 
-  /* Light theme variations (optional) */
+  /* Light theme variations - cool off-white with indigo accents. */
   [data-theme="light"] {
-    --color-bg-primary: 255 255 255;
-    --color-bg-secondary: 248 250 252;
-    --color-bg-tertiary: 241 245 249;
-    --color-text-primary: 15 23 42;
-    --color-text-secondary: 51 65 85;
-    --color-text-tertiary: 100 116 139;
-    --color-text-muted: 148 163 184;
+    --color-bg-primary: 248 248 250;
+    --color-bg-secondary: 255 255 255;
+    --color-bg-tertiary: 238 239 245;
+    --color-bg-overlay: 248 248 250;
+    --color-bg-card: 255 255 255;
+    --color-bg-input: 255 255 255;
+
+    --color-text-primary: 35 35 51;
+    --color-text-secondary: 35 35 51;
+    --color-text-tertiary: 104 104 122;
+    --color-text-muted: 104 104 122;
+    --color-text-inverse: 255 255 255;
+
+    --color-border-primary: 222 222 232;
+    --color-border-secondary: 222 222 232;
+    --color-border-accent: 101 87 210;
+
+    --color-shadow-primary: 35 35 51;
+    --color-shadow-accent: 101 87 210;
+    --color-shadow-highlight: 101 87 210;
   }
 
   /* Smooth scrolling for the entire page */
@@ -92,6 +122,21 @@
   /* Ensure smooth scrolling works on all browsers */
   * {
     scroll-behavior: smooth;
+  }
+
+  body {
+    background: rgb(var(--color-bg-primary));
+    color: rgb(var(--color-text-primary));
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    letter-spacing: 0;
   }
 }
 
@@ -197,30 +242,124 @@
   .bg-gradient-primary-accent { background: linear-gradient(135deg, rgb(var(--color-primary-600)), rgb(var(--color-accent-600))); }
   .bg-gradient-accent-highlight { background: linear-gradient(135deg, rgb(var(--color-accent-600)), rgb(var(--color-highlight-600))); }
 
+  .archive-page-bg {
+    background:
+      radial-gradient(circle at 12% 8%, rgb(101 87 210 / 0.16), transparent 28rem),
+      linear-gradient(180deg, rgb(13 17 42) 0%, rgb(var(--color-bg-primary)) 42rem);
+  }
+
+  [data-theme="light"] .archive-page-bg {
+    background:
+      radial-gradient(circle at 12% 8%, rgb(101 87 210 / 0.08), transparent 28rem),
+      linear-gradient(180deg, #ffffff 0%, rgb(var(--color-bg-primary)) 42rem);
+  }
+
+  .filter-toolbar {
+    border-radius: 14px;
+    box-shadow:
+      0 18px 46px rgb(var(--color-shadow-primary) / 0.16),
+      0 0 0 1px rgb(var(--color-border-primary) / 0.32);
+  }
+
+  [data-theme="light"] .filter-toolbar {
+    box-shadow:
+      0 18px 46px rgb(35 35 51 / 0.08),
+      0 0 0 1px rgb(var(--color-border-primary) / 0.62);
+  }
+
   /* Text Gradient Utilities */
   .text-gradient-primary { 
-    background: linear-gradient(135deg, rgb(var(--color-primary-400)), rgb(var(--color-primary-600)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: rgb(var(--color-text-primary));
+    background: none;
+    -webkit-text-fill-color: currentColor;
   }
   .text-gradient-accent { 
-    background: linear-gradient(135deg, rgb(var(--color-accent-400)), rgb(var(--color-accent-600)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: rgb(var(--color-text-primary));
+    background: none;
+    -webkit-text-fill-color: currentColor;
   }
   .text-gradient-highlight { 
-    background: linear-gradient(135deg, rgb(var(--color-highlight-400)), rgb(var(--color-highlight-600)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: rgb(var(--color-text-primary));
+    background: none;
+    -webkit-text-fill-color: currentColor;
   }
   .text-gradient-primary-accent { 
-    background: linear-gradient(135deg, rgb(var(--color-primary-400)), rgb(var(--color-accent-400)));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: rgb(var(--color-text-primary));
+    background: none;
+    -webkit-text-fill-color: currentColor;
+  }
+
+  .btn-readable-primary {
+    background: rgb(var(--color-primary-600));
+    color: white;
+    border: 1px solid rgb(var(--color-primary-600));
+    box-shadow: 0 14px 30px -22px rgb(var(--color-shadow-primary) / 0.38);
+  }
+
+  .btn-readable-primary:hover {
+    background: rgb(var(--color-primary-700));
+  }
+
+  .btn-readable-surface {
+    background-color: rgb(var(--color-bg-secondary) / 0.9);
+    color: rgb(var(--color-text-primary));
+    border: 1px solid rgb(var(--color-border-primary));
+  }
+
+  .btn-readable-surface:hover {
+    background-color: rgb(var(--color-primary-600) / 0.12);
+    border-color: rgb(var(--color-border-accent));
+  }
+
+  .tag-readable {
+    background-color: rgb(var(--color-bg-secondary));
+    color: rgb(var(--color-text-muted));
+    border: 1px solid rgb(var(--color-border-primary));
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  [data-theme="dark"] .tag-readable {
+    background-color: rgb(var(--color-bg-secondary));
+    color: rgb(var(--color-text-muted));
+    border-color: rgb(var(--color-border-primary));
+  }
+
+  .skill-badge {
+    background: rgb(var(--color-bg-secondary));
+    color: rgb(var(--color-text-secondary));
+    border-color: rgb(var(--color-border-primary));
+    box-shadow: 0 18px 40px -30px rgb(var(--color-shadow-primary) / 0.22);
+  }
+
+  .skill-badge-primary {
+    border-color: rgb(var(--color-primary-500) / 0.52);
+  }
+
+  .skill-badge-accent {
+    border-color: rgb(var(--color-accent-500) / 0.5);
+  }
+
+  .skill-badge-highlight {
+    border-color: rgb(var(--color-highlight-500) / 0.5);
+  }
+
+  .skill-badge:hover,
+  .skill-badge-active {
+    background: rgb(var(--color-primary-600) / 0.12);
+    color: rgb(var(--color-text-primary));
+    border-color: rgb(var(--color-border-accent));
+    box-shadow: 0 20px 44px -30px rgb(var(--color-shadow-primary) / 0.32);
+  }
+
+  .skill-icon-chip {
+    background-color: rgb(var(--color-primary-500) / 0.12);
+  }
+
+  .skill-badge:hover .skill-icon-chip,
+  .skill-badge-active .skill-icon-chip {
+    background-color: rgb(255 255 255 / 0.16);
   }
 
   /* Custom Jiggle Animation */

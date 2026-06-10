@@ -56,8 +56,8 @@ const MainPortfolio: React.FC = () => {
         
         <HeroSection onImageClick={handleImageClick} />
         <AboutSection onImageClick={handleImageClick} />
-        <ResumeSection />
         <ProjectsSection />
+        <ResumeSection />
         <ContactSection />
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Palette, Camera, Lightbulb, Sparkles } from 'lucide-react';
+import { ArrowLeft, Camera, Sparkles } from 'lucide-react';
 
 const AlternatePage: React.FC = () => {
   const navigate = useNavigate();

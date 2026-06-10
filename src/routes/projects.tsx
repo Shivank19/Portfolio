@@ -66,7 +66,7 @@ function AllProjects() {
             </h1>
             <p className="mt-5 max-w-[690px] text-[1.08rem] leading-relaxed text-muted-foreground">
               A single-page showcase of every project in the portfolio dataset. Each project is a
-              toggle, and each expanded view contains only the fields available for that project.
+              toggle and each expanded view contains only the fields available for that project.
             </p>
           </div>
 

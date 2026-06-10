@@ -14,7 +14,7 @@ export function Contact() {
         <div className="md:col-span-3">
           <p className="max-w-xl text-lg leading-relaxed text-foreground/90">
             I'm always happy to chat about quantitative finance, computational biology, graduate
-            research, or unusual problems that sit between fields. The fastest way to reach me is
+            research or unusual problems that sit between fields. The fastest way to reach me is
             email.
           </p>
           <a

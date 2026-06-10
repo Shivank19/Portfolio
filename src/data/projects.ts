@@ -41,11 +41,11 @@ export const projects: Project[] = [
       overview:
         "A research-oriented NLP project investigating whether subtle linguistic patterns in corporate earnings calls can signal future financial restatements before they become public.",
       problem:
-        "Financial restatements are often revealed after investors, analysts, and regulators have already relied on inaccurate reporting. The project asks whether management language and analyst exchanges contain earlier warning signals.",
+        "Financial restatements are often revealed after investors, analysts and regulators have already relied on inaccurate reporting. The project asks whether management language and analyst exchanges contain earlier warning signals.",
       approach: [
         "Built a benchmark dataset linking SEC Form 8-K restatement filings to earnings call transcripts.",
         "Designed a transcript segmentation pipeline to separate prepared executive remarks from analyst Q&A.",
-        "Evaluated lexicon baselines, domain-specific transformer models, and LLM prompting approaches.",
+        "Evaluated lexicon baselines, domain-specific transformer models and LLM prompting approaches.",
         "Applied SHAP and integrated gradients to interpret which language patterns influenced predictions.",
       ],
       outcomes: [
@@ -80,8 +80,8 @@ export const projects: Project[] = [
       problem:
         "Medical literature QA needs answers that stay grounded in source material, especially when questions move between core domain topics and off-domain boundary cases.",
       approach: [
-        "Built full ingestion for parsing, chunking, and local vector indexing of PubMed abstracts.",
-        "Implemented retrieval with sentence-transformers embeddings, cosine similarity search, and deduplication.",
+        "Built full ingestion for parsing, chunking and local vector indexing of PubMed abstracts.",
+        "Implemented retrieval with sentence-transformers embeddings, cosine similarity search and deduplication.",
         "Engineered a RAG prompt with source-grounding constraints and low-temperature Llama 3 generation.",
         "Evaluated the system across 30 core domain and off-domain boundary questions.",
       ],
@@ -143,7 +143,7 @@ export const projects: Project[] = [
     slug: "rhubarb-dice-scoring",
     title: "Real-Time Scoring for Rhubarb Dice Game",
     summary:
-      "A computer vision system for detecting, tracking, and scoring cards and colored dice in a physical game setting.",
+      "A computer vision system for detecting, tracking and scoring cards and colored dice in a physical game setting.",
     year: "Recent",
     domain: "ML",
     tech: [
@@ -158,19 +158,19 @@ export const projects: Project[] = [
     featured: true,
     details: {
       overview:
-        "A real-time computer vision system for detecting, tracking, and scoring cards and colored dice under rotation, occlusion, motion blur, and small-object detection challenges.",
+        "A real-time computer vision system for detecting, tracking and scoring cards and colored dice under rotation, occlusion, motion blur and small-object detection challenges.",
       problem:
-        "Physical tabletop scoring is visually messy: dice are small, cards rotate, pieces overlap, and frame-by-frame detections can flicker enough to make scoring unreliable.",
+        "Physical tabletop scoring is visually messy: dice are small, cards rotate, pieces overlap and frame-by-frame detections can flicker enough to make scoring unreliable.",
       approach: [
         "Built an end-to-end vision pipeline for detecting cards and dice in real time.",
         "Used YOLOv8 for object detection and YOLO-CLS for dice value classification.",
         "Applied K-Means clustering for dice color classification.",
-        "Implemented tracking and association using IoU, centroid matching, Kalman filtering, EMA, and overlap-based methods.",
+        "Implemented tracking and association using IoU, centroid matching, Kalman filtering, EMA and overlap-based methods.",
         "Replaced event-based scoring with frame-level snapshot scoring to improve stability.",
       ],
       outcomes: [
         "Stabilized game-state detection across noisy visual conditions.",
-        "Combined object detection, classification, color clustering, and tracking into one scoring loop.",
+        "Combined object detection, classification, color clustering and tracking into one scoring loop.",
         "Improved scoring reliability by grounding scores in frame-level snapshots.",
       ],
       learnings: [
@@ -198,15 +198,15 @@ export const projects: Project[] = [
       overview:
         "An interactive data storytelling project exploring how popular music changed from 1960 to 2020, including the contrast between increasingly danceable music and sadder emotional tone.",
       problem:
-        "Large music datasets can hide long-term cultural patterns unless numerical audio features are cleaned, grouped, and presented as an explorable narrative.",
+        "Large music datasets can hide long-term cultural patterns unless numerical audio features are cleaned, grouped and presented as an explorable narrative.",
       approach: [
         "Analyzed more than 160,000 Spotify tracks across seven decades.",
         "Cleaned and engineered features across 13 numerical musical attributes.",
-        "Compared long-term trends in valence, loudness, acousticness, and danceability.",
+        "Compared long-term trends in valence, loudness, acousticness and danceability.",
         "Built an interactive React and D3.js narrative visualization.",
       ],
       outcomes: [
-        "Surfaced decade-level shifts in musical mood, production, and energy.",
+        "Surfaced decade-level shifts in musical mood, production and energy.",
         "Built a visual story around the tension between danceability and emotional tone.",
         "Turned exploratory audio analysis into an interactive reader experience.",
       ],
@@ -289,18 +289,18 @@ export const projects: Project[] = [
     slug: "clashpoint-debating-forum",
     title: "ClashPoint - Online Debating Forum",
     summary:
-      "A full-stack debating platform with threaded arguments, voting, moderation, and real-time toxicity detection.",
+      "A full-stack debating platform with threaded arguments, voting, moderation and real-time toxicity detection.",
     year: "Recent",
     domain: "Systems",
     tech: ["Flask", "PostgreSQL", "TensorFlow.js", "JavaScript", "AJAX", "Content Moderation"],
     featured: false,
     details: {
       overview:
-        "A full-stack online debating platform that supports real-time discussion, argument posting, replies, voting, and content moderation.",
+        "A full-stack online debating platform that supports real-time discussion, argument posting, replies, voting and content moderation.",
       problem:
         "Online debate tools need both rich threaded discussion mechanics and moderation safeguards to keep conversations usable.",
       approach: [
-        "Developed the main debate page for viewing, posting, replying to, editing, and deleting arguments.",
+        "Developed the main debate page for viewing, posting, replying to, editing and deleting arguments.",
         "Implemented nested threaded discussions with recursive AJAX-based rendering.",
         "Added voting and server-side score computation.",
         "Integrated real-time toxicity moderation using TensorFlow.js to prevent offensive content from being posted.",
@@ -321,20 +321,20 @@ export const projects: Project[] = [
     slug: "medimate-medication-tracker",
     title: "MediMate - Medication Tracking Web App",
     summary:
-      "A medication management app for prescription scanning, schedules, dose tracking, inventory, and reminders.",
+      "A medication management app for prescription scanning, schedules, dose tracking, inventory and reminders.",
     year: "Recent",
     domain: "Systems",
     tech: ["Vue.js", "Firebase", "Tesseract.js", "OCR", "JavaScript", "Medication Tracking"],
     featured: false,
     details: {
       overview:
-        "A full-stack medication management application designed to help users scan prescriptions, schedule medications, track doses, monitor inventory, and receive reminders.",
+        "A full-stack medication management application designed to help users scan prescriptions, schedule medications, track doses, monitor inventory and receive reminders.",
       problem:
-        "Medication tracking needs flexible schedules, reliable logging, and inventory awareness while staying simple enough for repeated daily use.",
+        "Medication tracking needs flexible schedules, reliable logging and inventory awareness while staying simple enough for repeated daily use.",
       approach: [
         "Built OCR-based prescription scanning using Tesseract.js.",
         "Designed medication add and edit workflows with flexible scheduling options.",
-        "Implemented real-time dose tracking, inventory tracking, and reminder logic.",
+        "Implemented real-time dose tracking, inventory tracking and reminder logic.",
         "Developed dynamic dose logging and undo behavior with transactional consistency.",
         "Added fallback scheduling logic for medications without specified times.",
       ],

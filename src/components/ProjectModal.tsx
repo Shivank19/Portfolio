@@ -1,4 +1,4 @@
-import type { Project } from "@/data/projects";
+import { getProjectLinks, type Project } from "@/data/projects";
 import {
   Dialog,
   DialogContent,
@@ -19,6 +19,7 @@ export function ProjectModal({
 }) {
   if (!project) return null;
   const d = project.details;
+  const links = getProjectLinks(project);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -98,9 +99,9 @@ export function ProjectModal({
           </div>
         </div>
 
-        {project.links && project.links.length > 0 && (
+        {links.length > 0 && (
           <div className="flex flex-wrap gap-4 pt-2 text-sm">
-            {project.links.map((l) => (
+            {links.map((l) => (
               <a
                 key={l.label}
                 href={l.href}

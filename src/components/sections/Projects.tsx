@@ -19,15 +19,22 @@ export function Projects() {
     >
       <div className="grid gap-6 md:grid-cols-2">
         {featured.map((p) => (
-          <button
+          <div
             key={p.slug}
-            type="button"
+            role="button"
+            tabIndex={0}
             onClick={() => setActive(p)}
-            className="text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg"
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setActive(p);
+              }
+            }}
+            className="cursor-pointer rounded-lg text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             aria-label={`Open details for ${p.title}`}
           >
             <ProjectCard project={p} />
-          </button>
+          </div>
         ))}
       </div>
       <div className="mt-10 flex justify-end">

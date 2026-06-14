@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { projects } from "@/data/projects";
+import { getProjectLinks, projects } from "@/data/projects";
 import type { Project } from "@/data/projects";
-import { ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -21,7 +21,7 @@ const domainColor: Record<Project["domain"], string> = {
   Finance: "var(--color-domain-finance)",
   Biotech: "var(--color-domain-biotech)",
   ML: "var(--color-domain-ml)",
-  Systems: "var(--color-domain-systems)",
+  "Web/Visualization": "var(--color-domain-web-visualization)",
 };
 
 function AllProjects() {
@@ -138,6 +138,7 @@ function ProjectToggle({
 }) {
   const d = project.details;
   const tint = domainColor[project.domain];
+  const links = getProjectLinks(project);
 
   return (
     <article
@@ -159,7 +160,7 @@ function ProjectToggle({
               aria-hidden
             />
             <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
-              {project.domain} / {project.year} / {project.featured ? "Featured" : "Not featured"}
+              {project.domain} / {project.year}
             </span>
           </span>
           <h2 className="font-serif text-[clamp(1.55rem,3vw,2.35rem)] leading-[1.08]">
@@ -179,6 +180,23 @@ function ProjectToggle({
         </span>
       </button>
 
+      {links.length > 0 && (
+        <div className="flex flex-wrap gap-2 px-5 pb-5 md:px-6">
+          {links.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-8 items-center gap-1 rounded-full border border-[color:color-mix(in_oklab,var(--tint)_35%,var(--border))] px-3 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-[color:var(--tint)] no-underline transition-colors hover:bg-[color:color-mix(in_oklab,var(--tint)_8%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {link.label}
+              <ArrowUpRight className="h-3 w-3" />
+            </a>
+          ))}
+        </div>
+      )}
+
       {open && (
         <div id={project.slug} className="px-5 pb-5 md:px-6 md:pb-6">
           <div className="grid gap-4 border-t border-rule pt-5 md:grid-cols-2">
@@ -188,13 +206,15 @@ function ProjectToggle({
             <Field label="Tech">
               <Tags items={project.tech} />
             </Field>
-            {project.links && project.links.length > 0 && (
+            {links.length > 0 && (
               <Field label="Links">
                 <div className="flex flex-wrap gap-2">
-                  {project.links.map((link) => (
+                  {links.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
                       className="inline-flex min-h-8 items-center rounded-full border border-[color:color-mix(in_oklab,var(--tint)_35%,var(--border))] px-3 font-mono text-[0.66rem] uppercase tracking-[0.14em] text-[color:var(--tint)] no-underline transition-colors hover:bg-[color:color-mix(in_oklab,var(--tint)_8%,transparent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {link.label}
@@ -203,9 +223,6 @@ function ProjectToggle({
                 </div>
               </Field>
             )}
-            <Field label="Featured">
-              <p>{String(project.featured)}</p>
-            </Field>
           </div>
 
           {d && (

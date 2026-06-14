@@ -7,17 +7,36 @@ export type ProjectDetails = {
   results?: { label: string; value: string }[];
 };
 
+export type ProjectLinks = {
+  paper?: string;
+  code?: string;
+  live?: string;
+  demo?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
   summary: string;
   year: string;
-  domain: "Finance" | "Biotech" | "ML" | "Systems";
+  domain: "Finance" | "Biotech" | "ML" | "Web/Visualization";
   tech: string[];
   featured: boolean;
-  links?: { label: string; href: string }[];
+  links?: ProjectLinks;
   details?: ProjectDetails;
 };
+
+export function getProjectLinks(project: Project) {
+  const links = project.links;
+  if (!links) return [];
+
+  return [
+    { label: "Paper", href: links.paper },
+    { label: "Code", href: links.code },
+    { label: "Live", href: links.live },
+    { label: "Demo", href: links.demo },
+  ].filter((link): link is { label: string; href: string } => Boolean(link.href));
+}
 
 export const projects: Project[] = [
   {
@@ -33,20 +52,24 @@ export const projects: Project[] = [
       "FinBERT",
       "Longformer",
       "LLM Prompting",
-      "SHAP",
-      "Integrated Gradients",
+      "SHAP Attribution",
     ],
     featured: true,
+    links: {
+      paper:
+        "https://drive.google.com/file/d/1slQYcuF04iPAdpiR4km4Vg5OAaVD-A-a/view?usp=sharing",
+      code: "https://github.com/Shivank19/CSCI5541-Final-Project",
+    },
     details: {
       overview:
         "A research-oriented NLP project investigating whether subtle linguistic patterns in corporate earnings calls can signal future financial restatements before they become public.",
       problem:
-        "Financial restatements are often revealed after investors, analysts and regulators have already relied on inaccurate reporting. The project asks whether management language and analyst exchanges contain earlier warning signals.",
+        "Financial restatements are often revealed after investors, analysts and regulators have already relied on inaccurate reporting. The project asks whether management language in earnings calls and analyst exchanges contain earlier warning signals.",
       approach: [
         "Built a benchmark dataset linking SEC Form 8-K restatement filings to earnings call transcripts.",
         "Designed a transcript segmentation pipeline to separate prepared executive remarks from analyst Q&A.",
         "Evaluated lexicon baselines, domain-specific transformer models and LLM prompting approaches.",
-        "Applied SHAP and integrated gradients to interpret which language patterns influenced predictions.",
+        "Applied SHAP attribution to interpret which language patterns influenced predictions.",
       ],
       outcomes: [
         "Compared scripted and unscripted transcript segments as separate predictive signals.",
@@ -59,9 +82,9 @@ export const projects: Project[] = [
         "Domain-specific models still need careful baselines to be meaningful.",
       ],
       results: [
-        { label: "Source filings", value: "8-K" },
-        { label: "Transcript views", value: "2" },
-        { label: "Explainability", value: "SHAP + IG" },
+        { label: "Source filings", value: "8-K (Item 4.02)" },
+        { label: "2 Transcript Sections", value: "Scripted + Q&A" },
+        { label: "Explainability", value: "SHAP Attribution" },
       ],
     },
   },
@@ -74,9 +97,13 @@ export const projects: Project[] = [
     domain: "Biotech",
     tech: ["Python", "RAG", "ChromaDB", "Llama 3", "Sentence Transformers", "PubMed"],
     featured: true,
+    links: {
+      code: "https://github.com/Shivank19/medical-lit-rag",
+      live: "https://huggingface.co/spaces/shivank19/MediRAG",
+    },
     details: {
       overview:
-        "A retrieval-augmented generation system built over 200 peer-reviewed PubMed abstracts on mRNA cancer vaccines using Llama 3 and ChromaDB.",
+        "A RAG-baseda system built over 200 peer-reviewed PubMed abstracts on mRNA cancer vaccines using Llama 3 and ChromaDB.",
       problem:
         "Medical literature QA needs answers that stay grounded in source material, especially when questions move between core domain topics and off-domain boundary cases.",
       approach: [
@@ -111,6 +138,9 @@ export const projects: Project[] = [
     domain: "Biotech",
     tech: ["QIIME2", "DADA2", "SILVA", "UniFrac", "Bray-Curtis", "Faith's PD", "16S rRNA"],
     featured: true,
+    links: {
+      paper: "https://drive.google.com/file/d/1jO7yjOp-GHDYXxyduWchtFz4_PnwQe1a/view?usp=sharing",
+    },
     details: {
       overview:
         "A biomedical data analysis project studying gut microbiome differences associated with celiac disease using 16S rRNA sequencing data.",
@@ -156,6 +186,10 @@ export const projects: Project[] = [
       "K-Means",
     ],
     featured: true,
+    links: {
+      paper: "https://drive.google.com/file/d/1t6EvX4iXCk-v47tobKsJoU2QuMYy_DM-/view?usp=sharing",
+      code: "https://github.com/Stefhermann/cv5561-f25-team-spoton",
+    },
     details: {
       overview:
         "A real-time computer vision system for detecting, tracking and scoring cards and colored dice under rotation, occlusion, motion blur and small-object detection challenges.",
@@ -194,6 +228,11 @@ export const projects: Project[] = [
     domain: "ML",
     tech: ["Python", "Pandas", "NumPy", "React", "D3.js", "Data Visualization", "EDA"],
     featured: false,
+    links: {
+      live: "https://shivank19.github.io/CSCI5609_Final_Project/",
+      code: "https://github.com/Shivank19/CSCI5609_Final_Project",
+      paper: "https://drive.google.com/file/d/1JuvtrlvQd1O59fQjGM7iJO3IBRAdnCzH/view?usp=sharing",
+    },
     details: {
       overview:
         "An interactive data storytelling project exploring how popular music changed from 1960 to 2020, including the contrast between increasingly danceable music and sadder emotional tone.",
@@ -223,14 +262,88 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "clashpoint-debating-forum",
+    title: "ClashPoint - Online Debating Forum",
+    summary:
+      "A full-stack debating platform with threaded arguments, voting, moderation and real-time toxicity detection.",
+    year: "Recent",
+    domain: "Web/Visualization",
+    tech: ["Flask", "PostgreSQL", "TensorFlow.js", "JavaScript", "AJAX", "Content Moderation"],
+    featured: false,
+    links:{
+      live: "https://clashpoint.onrender.com/",
+    },
+    details: {
+      overview:
+        "A full-stack online debating platform that supports real-time discussion, argument posting, replies, voting and content moderation.",
+      problem:
+        "Online debate tools need both rich threaded discussion mechanics and moderation safeguards to keep conversations usable.",
+      approach: [
+        "Developed the main debate page for viewing, posting, replying to, editing and deleting arguments.",
+        "Implemented nested threaded discussions with recursive AJAX-based rendering.",
+        "Added voting and server-side score computation.",
+        "Integrated real-time toxicity moderation using TensorFlow.js to prevent offensive content from being posted.",
+      ],
+      outcomes: [
+        "Built a complete debate workflow from argument creation through moderation.",
+        "Supported nested discussions without full-page reloads.",
+        "Added automated client-side toxicity checks before submission.",
+      ],
+      learnings: [
+        "Threaded interfaces need careful recursive rendering and state handling.",
+        "Moderation belongs in the product flow, not as an afterthought.",
+        "Server-side score computation keeps voting behavior consistent.",
+      ],
+    },
+  },
+  {
+    slug: "medimate-medication-tracker",
+    title: "MediMate - Medication Tracking Web App",
+    summary:
+      "A medication management app for prescription scanning, schedules, dose tracking, inventory and reminders.",
+    year: "Recent",
+    domain: "Web/Visualization",
+    tech: ["Vue.js", "Firebase", "Tesseract.js", "OCR", "JavaScript", "Medication Tracking"],
+    featured: false,
+    links:{
+      live: "https://project2-e9097.web.app/"
+    },
+    details: {
+      overview:
+        "A full-stack medication management application designed to help users scan prescriptions, schedule medications, track doses, monitor inventory and receive reminders.",
+      problem:
+        "Medication tracking needs flexible schedules, reliable logging and inventory awareness while staying simple enough for repeated daily use.",
+      approach: [
+        "Built OCR-based prescription scanning using Tesseract.js.",
+        "Designed medication add and edit workflows with flexible scheduling options.",
+        "Implemented real-time dose tracking, inventory tracking and reminder logic.",
+        "Developed dynamic dose logging and undo behavior with transactional consistency.",
+        "Added fallback scheduling logic for medications without specified times.",
+      ],
+      outcomes: [
+        "Created a structured medication tracking workflow from scan to reminder.",
+        "Supported flexible dose schedules and inventory-aware state updates.",
+        "Improved reliability with transactional dose logging and undo behavior.",
+      ],
+      learnings: [
+        "Health-adjacent workflows need forgiving defaults and clear state transitions.",
+        "OCR helps most when paired with easy correction paths.",
+        "Undo behavior is a core reliability feature for tracking apps.",
+      ],
+    },
+  },
+  {
     slug: "adaptive-traffic-control",
     title: "Adaptive Traffic Congestion Control",
     summary:
       "Deep Q-learning for dynamically optimizing traffic light timings at a simulated four-way intersection.",
     year: "Recent",
-    domain: "Systems",
+    domain: "Web/Visualization",
     tech: ["Python", "Reinforcement Learning", "Deep Q-Learning", "SUMO", "Deep Neural Networks"],
     featured: false,
+    links: {
+      demo: "https://www.youtube.com/watch?v=xr_JjAukCBI"
+    },
     details: {
       overview:
         "A reinforcement learning project focused on dynamically optimizing traffic light timings at a four-way intersection using simulated traffic conditions.",
@@ -263,6 +376,9 @@ export const projects: Project[] = [
     domain: "ML",
     tech: ["Python", "GANs", "SRGAN", "Deep Learning", "Computer Vision", "Perceptual Loss"],
     featured: false,
+    links:{
+      demo: "https://www.youtube.com/watch?v=im_oJ2r9bWM"
+    },
     details: {
       overview:
         "A deep learning project focused on improving the resolution and visual quality of low-resolution images using a Super-Resolution Generative Adversarial Network.",
@@ -282,71 +398,6 @@ export const projects: Project[] = [
         "Perceptual quality is not captured by pixel loss alone.",
         "GAN training benefits from disciplined visual checks throughout training.",
         "Texture recovery is as much about loss design as architecture.",
-      ],
-    },
-  },
-  {
-    slug: "clashpoint-debating-forum",
-    title: "ClashPoint - Online Debating Forum",
-    summary:
-      "A full-stack debating platform with threaded arguments, voting, moderation and real-time toxicity detection.",
-    year: "Recent",
-    domain: "Systems",
-    tech: ["Flask", "PostgreSQL", "TensorFlow.js", "JavaScript", "AJAX", "Content Moderation"],
-    featured: false,
-    details: {
-      overview:
-        "A full-stack online debating platform that supports real-time discussion, argument posting, replies, voting and content moderation.",
-      problem:
-        "Online debate tools need both rich threaded discussion mechanics and moderation safeguards to keep conversations usable.",
-      approach: [
-        "Developed the main debate page for viewing, posting, replying to, editing and deleting arguments.",
-        "Implemented nested threaded discussions with recursive AJAX-based rendering.",
-        "Added voting and server-side score computation.",
-        "Integrated real-time toxicity moderation using TensorFlow.js to prevent offensive content from being posted.",
-      ],
-      outcomes: [
-        "Built a complete debate workflow from argument creation through moderation.",
-        "Supported nested discussions without full-page reloads.",
-        "Added automated client-side toxicity checks before submission.",
-      ],
-      learnings: [
-        "Threaded interfaces need careful recursive rendering and state handling.",
-        "Moderation belongs in the product flow, not as an afterthought.",
-        "Server-side score computation keeps voting behavior consistent.",
-      ],
-    },
-  },
-  {
-    slug: "medimate-medication-tracker",
-    title: "MediMate - Medication Tracking Web App",
-    summary:
-      "A medication management app for prescription scanning, schedules, dose tracking, inventory and reminders.",
-    year: "Recent",
-    domain: "Systems",
-    tech: ["Vue.js", "Firebase", "Tesseract.js", "OCR", "JavaScript", "Medication Tracking"],
-    featured: false,
-    details: {
-      overview:
-        "A full-stack medication management application designed to help users scan prescriptions, schedule medications, track doses, monitor inventory and receive reminders.",
-      problem:
-        "Medication tracking needs flexible schedules, reliable logging and inventory awareness while staying simple enough for repeated daily use.",
-      approach: [
-        "Built OCR-based prescription scanning using Tesseract.js.",
-        "Designed medication add and edit workflows with flexible scheduling options.",
-        "Implemented real-time dose tracking, inventory tracking and reminder logic.",
-        "Developed dynamic dose logging and undo behavior with transactional consistency.",
-        "Added fallback scheduling logic for medications without specified times.",
-      ],
-      outcomes: [
-        "Created a structured medication tracking workflow from scan to reminder.",
-        "Supported flexible dose schedules and inventory-aware state updates.",
-        "Improved reliability with transactional dose logging and undo behavior.",
-      ],
-      learnings: [
-        "Health-adjacent workflows need forgiving defaults and clear state transitions.",
-        "OCR helps most when paired with easy correction paths.",
-        "Undo behavior is a core reliability feature for tracking apps.",
       ],
     },
   },

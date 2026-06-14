@@ -1,5 +1,6 @@
 import { Section } from "@/components/Section";
 import { profile } from "@/data/profile";
+import me2Url from "@/assets/me2.jpg";
 
 export function About() {
   return (
@@ -16,6 +17,15 @@ export function About() {
           ))}
         </div>
         <aside className="md:col-span-2 md:border-l md:border-rule md:pl-10">
+          <div className="relative mb-8 max-w-[18rem] rounded-lg before:absolute before:-inset-1.5 before:rounded-[inherit] before:bg-[color:color-mix(in_oklab,var(--accent)_34%,transparent)] before:opacity-75 before:blur-lg">
+            <div className="relative overflow-hidden rounded-lg border border-[color:color-mix(in_oklab,var(--accent)_45%,var(--border))] bg-card shadow-[0_0_28px_color-mix(in_oklab,var(--accent)_22%,transparent)]">
+              <img
+                src={me2Url}
+                alt="Shivank Sapra"
+                className="aspect-[4/5] w-full object-cover transition-transform duration-300 ease-out hover:scale-150"
+              />
+            </div>
+          </div>
           <dl className="space-y-5 font-mono text-xs uppercase tracking-wider text-muted-foreground">
             <div>
               <dt className="mb-1">Focus</dt>

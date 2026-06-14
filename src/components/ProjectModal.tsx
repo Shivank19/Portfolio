@@ -25,9 +25,8 @@ export function ProjectModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[88vh] max-w-3xl overflow-y-auto border-border bg-background">
         <DialogHeader className="space-y-3 text-left">
-          <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="flex items-center font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
             <span>{project.domain}</span>
-            <span>{project.year}</span>
           </div>
           <DialogTitle className="font-serif text-3xl leading-tight md:text-4xl">
             {project.title}

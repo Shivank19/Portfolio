@@ -23,7 +23,7 @@ export function ProjectCard({ project }: { project: Project }) {
         style={{ background: tint }}
       />
       <div>
-        <div className="mb-3 flex items-center justify-between font-mono text-xs uppercase tracking-wider">
+        <div className="mb-3 flex items-center font-mono text-xs uppercase tracking-wider">
           <span
             className="inline-flex items-center gap-1.5"
             style={{ color: tint }}
@@ -34,7 +34,6 @@ export function ProjectCard({ project }: { project: Project }) {
             />
             {project.domain}
           </span>
-          <span className="text-muted-foreground">{project.year}</span>
         </div>
         <h3 className="font-serif text-2xl leading-tight">{project.title}</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.summary}</p>

@@ -160,7 +160,7 @@ function ProjectToggle({
               aria-hidden
             />
             <span className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
-              {project.domain} / {project.year}
+              {project.domain}
             </span>
           </span>
           <h2 className="font-serif text-[clamp(1.55rem,3vw,2.35rem)] leading-[1.08]">
@@ -199,10 +199,7 @@ function ProjectToggle({
 
       {open && (
         <div id={project.slug} className="px-5 pb-5 md:px-6 md:pb-6">
-          <div className="grid gap-4 border-t border-rule pt-5 md:grid-cols-2">
-            <Field label="Slug">
-              <p className="break-words font-mono">{project.slug}</p>
-            </Field>
+          <div className="grid gap-4 border-t border-rule pt-5">
             <Field label="Tech">
               <Tags items={project.tech} />
             </Field>

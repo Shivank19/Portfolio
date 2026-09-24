@@ -4,10 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Minimal research-grad portfolio system.
- * Tokens are paper/ink with a single muted accent. Serif display + sans body.
- */
+/* Warm neutral surfaces and muted teal, shared across both themes. */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -48,35 +45,46 @@
 
 :root {
   --radius: 0.5rem;
-  /* Clean off-white with cool undertone */
-  --background: oklch(0.985 0.003 250);
-  --foreground: oklch(0.18 0.02 265);
-  --card: oklch(0.985 0.003 250);
-  --card-foreground: oklch(0.18 0.02 265);
-  --popover: oklch(0.985 0.003 250);
-  --popover-foreground: oklch(0.18 0.02 265);
-  --primary: oklch(0.2 0.02 265);
-  --primary-foreground: oklch(0.985 0.003 250);
-  --secondary: oklch(0.95 0.008 260);
-  --secondary-foreground: oklch(0.2 0.02 265);
-  --muted: oklch(0.955 0.006 260);
-  --muted-foreground: oklch(0.48 0.02 265);
-  /* Electric indigo accent */
-  --accent: oklch(0.52 0.2 275);
-  --accent-foreground: oklch(0.985 0.003 250);
-  /* Secondary accent — deep navy */
-  --accent-2: oklch(0.3 0.1 270);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.985 0.003 250);
-  --border: oklch(0.9 0.008 260);
-  --input: oklch(0.9 0.008 260);
-  --ring: oklch(0.52 0.2 275);
-  --rule: oklch(0.82 0.01 260);
-  /* Domain tints */
-  --domain-finance: oklch(0.3 0.1 270);
-  --domain-biotech: oklch(0.55 0.12 200);
-  --domain-ml: oklch(0.52 0.2 275);
-  --domain-web-visualization: oklch(0.45 0.08 250);
+  --background: #f3f0e8;
+  --foreground: #14181c;
+  --card: rgba(255, 255, 255, 0.78);
+  --card-foreground: #14181c;
+  --popover: #ffffff;
+  --popover-foreground: #14181c;
+  --primary: #245d59;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(36, 93, 89, 0.12);
+  --secondary-foreground: #173f3c;
+  --muted: rgba(36, 93, 89, 0.12);
+  --muted-foreground: #646e79;
+  --accent: #245d59;
+  --accent-foreground: #ffffff;
+  --accent-2: #173f3c;
+  --destructive: #b4473f;
+  --destructive-foreground: #ffffff;
+  --border: rgba(20, 24, 28, 0.12);
+  --input: rgba(20, 24, 28, 0.16);
+  --ring: #245d59;
+  --rule: rgba(20, 24, 28, 0.12);
+  --domain-finance: #245d59;
+  --domain-biotech: #426e63;
+  --domain-ml: #3f626c;
+  --domain-web-visualization: #556b70;
+  --hero-gradient: linear-gradient(115deg, #f3f0e8 0%, #f3f0e8 58%, #e4ece6 100%);
+  --hero-foreground: #14181c;
+  --hero-muted: #646e79;
+  --hero-mark: linear-gradient(135deg, #173f3c, #8ac7ba);
+  --hero-mark-opacity: 0.12;
+  --hero-primary-bg: #245d59;
+  --hero-primary-fg: #ffffff;
+  --hero-primary-hover: #173f3c;
+  --hero-secondary-bg: rgba(255, 255, 255, 0.78);
+  --hero-secondary-fg: #14181c;
+  --hero-secondary-border: rgba(20, 24, 28, 0.12);
+  --hero-secondary-hover-bg: #ffffff;
+  --hero-secondary-hover-border: rgba(36, 93, 89, 0.45);
+  --hero-link-hover: #173f3c;
+  --hero-focus: #245d59;
   --gradient-accent: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 100%);
   --gradient-soft: linear-gradient(
     180deg,
@@ -86,32 +94,46 @@
 }
 
 .dark {
-  /* Midnight indigo */
-  --background: oklch(0.13 0.025 270);
-  --foreground: oklch(0.95 0.008 260);
-  --card: oklch(0.16 0.03 270);
-  --card-foreground: oklch(0.95 0.008 260);
-  --popover: oklch(0.16 0.03 270);
-  --popover-foreground: oklch(0.95 0.008 260);
-  --primary: oklch(0.95 0.008 260);
-  --primary-foreground: oklch(0.13 0.025 270);
-  --secondary: oklch(0.21 0.035 270);
-  --secondary-foreground: oklch(0.95 0.008 260);
-  --muted: oklch(0.19 0.03 270);
-  --muted-foreground: oklch(0.68 0.02 260);
-  --accent: oklch(0.68 0.18 275);
-  --accent-foreground: oklch(0.13 0.025 270);
-  --accent-2: oklch(0.45 0.16 275);
-  --destructive: oklch(0.65 0.18 25);
-  --destructive-foreground: oklch(0.13 0.025 270);
-  --border: oklch(0.26 0.035 270);
-  --input: oklch(0.26 0.035 270);
-  --ring: oklch(0.68 0.18 275);
-  --rule: oklch(0.3 0.035 270);
-  --domain-finance: oklch(0.7 0.12 250);
-  --domain-biotech: oklch(0.72 0.12 200);
-  --domain-ml: oklch(0.72 0.18 285);
-  --domain-web-visualization: oklch(0.68 0.08 240);
+  --background: #101418;
+  --foreground: #f4f1e9;
+  --card: rgba(24, 29, 34, 0.78);
+  --card-foreground: #f4f1e9;
+  --popover: #181d22;
+  --popover-foreground: #f4f1e9;
+  --primary: #8ac7ba;
+  --primary-foreground: #101418;
+  --secondary: rgba(138, 199, 186, 0.13);
+  --secondary-foreground: #f4f1e9;
+  --muted: rgba(138, 199, 186, 0.13);
+  --muted-foreground: #a6adb5;
+  --accent: #8ac7ba;
+  --accent-foreground: #101418;
+  --accent-2: #bce8df;
+  --destructive: #e28b82;
+  --destructive-foreground: #101418;
+  --border: rgba(244, 241, 233, 0.13);
+  --input: rgba(244, 241, 233, 0.2);
+  --ring: #8ac7ba;
+  --rule: rgba(244, 241, 233, 0.13);
+  --domain-finance: #8ac7ba;
+  --domain-biotech: #a6d4b7;
+  --domain-ml: #a0c9cf;
+  --domain-web-visualization: #b2c7c5;
+  --hero-gradient: linear-gradient(125deg, #17201f 0%, #173f3c 58%, #245d59 100%);
+  --hero-foreground: #f4f1e9;
+  --hero-muted: #c4d4cf;
+  --hero-mark: linear-gradient(135deg, #8ac7ba, #bce8df);
+  --hero-mark-opacity: 0.18;
+  --hero-primary-bg: #f4f1e9;
+  --hero-primary-fg: #17201f;
+  --hero-primary-hover: #ffffff;
+  --hero-secondary-bg: rgba(255, 255, 255, 0.1);
+  --hero-secondary-fg: #f4f1e9;
+  --hero-secondary-border: rgba(255, 255, 255, 0.3);
+  --hero-secondary-hover-bg: rgba(255, 255, 255, 0.15);
+  --hero-secondary-hover-border: rgba(255, 255, 255, 0.6);
+  --hero-link-hover: #bce8df;
+  --hero-focus: #bce8df;
   --gradient-accent: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 100%);
   --gradient-soft: linear-gradient(
     180deg,
@@ -154,7 +176,7 @@
     text-wrap: balance;
   }
   .grain {
-    background-image: radial-gradient(oklch(0 0 0 / 0.025) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(20, 24, 28, 0.025) 1px, transparent 1px);
     background-size: 3px 3px;
   }
   .rule {

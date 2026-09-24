@@ -9,13 +9,13 @@ import { Contact } from "@/components/sections/Contact";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your Name — MSCS Researcher · Finance × Biotech" },
+      { title: "Shivank Sapra" },
       {
         name: "description",
         content:
           "Personal portfolio of a research-oriented MSCS student working at the intersection of quantitative finance and biotechnology.",
       },
-      { property: "og:title", content: "Your Name — MSCS Researcher" },
+      { property: "og:title", content: "Shivank Sapra — MSCS Researcher" },
       {
         property: "og:description",
         content: "Quantitative finance and computational biology research.",

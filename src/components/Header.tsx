@@ -14,7 +14,7 @@ export function Header() {
   const onHome = location.pathname === "/";
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-md dark:bg-[#17201f]/95">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
         <Link to="/" className="font-serif text-lg tracking-tight">
           <span className="text-accent">·</span> SS

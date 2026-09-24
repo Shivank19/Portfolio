@@ -29,6 +29,7 @@ export const skills: { group: string; items: string[] }[] = [
       "Firebase",
       "Git",
       "GitHub",
+      "Docker",
     ],
   },
 ];

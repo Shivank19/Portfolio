@@ -170,6 +170,51 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "kleros-claim-audit",
+    title: "Kleros: AI-Assisted Healthcare Claim Review System",
+    summary:
+      "A human-in-the-loop healthcare AI prototype that checks clinical documentation against payer policy requirements and produces an evidence-backed recommendation with an audit trail.",
+    year: "2026",
+    domain: "ML",
+    tech: [
+      "React",
+      "TypeScript",
+      "Material UI",
+      "Node.js",
+      "Express",
+      "Vercel Functions",
+      "Llama 3.3",
+      "Qwen 3",
+    ],
+    featured: true,
+    links: {
+      live: "https://kleros-one.vercel.app",
+      code: "https://github.com/Shivank19/Kleros",
+    },
+    details: {
+      overview:
+        "A proof-of-concept reviewer-support tool that compares a clinical note and billing code with payer policy requirements. It produces an evidence-backed recommendation and audit trail using synthetic cases, without autonomously adjudicating claims.",
+      problem:
+        "Healthcare claim review requires matching unstructured clinical documentation to structured policy criteria. Manual review can be slow and difficult to audit, while an unbounded AI recommendation could miss negations, invent support or conceal missing documentation.",
+      approach: [
+        "Used an LLM to extract relevant clinical evidence into structured facts.",
+        "Audited each policy requirement as MET, NOT_MET, AMBIGUOUS or NOT_DOCUMENTED.",
+        "Applied explicit rules to route cases to SUPPORTED, NOT_SUPPORTED or NEEDS_HUMAN_REVIEW.",
+        "Built a reviewer dashboard showing requirement checks, extracted facts, missing documentation and the decision trace.",
+      ],
+      outcomes: [
+        "Built a full-stack healthcare claim review proof of concept using synthetic clinical notes and simplified payer policies.",
+        "Separated LLM-assisted extraction and auditing from deterministic final routing.",
+        "Used structured JSON outputs to make model responses easier to validate and display.",
+      ],
+      learnings: [
+        "Requirement-level evidence is more useful to reviewers than a single unexplained label.",
+        "Explicit routing rules keep ambiguous or undocumented cases in the human-review path.",
+        "Real-world accuracy and reviewer time savings still need evaluation beyond synthetic scenarios.",
+      ],
+    },
+  },
+  {
     slug: "rhubarb-dice-scoring",
     title: "Real-Time Scoring for Rhubarb Dice Game",
     summary:
@@ -185,7 +230,7 @@ export const projects: Project[] = [
       "Kalman Filtering",
       "K-Means",
     ],
-    featured: true,
+    featured: false,
     links: {
       paper: "https://drive.google.com/file/d/1t6EvX4iXCk-v47tobKsJoU2QuMYy_DM-/view?usp=sharing",
       code: "https://github.com/Stefhermann/cv5561-f25-team-spoton",

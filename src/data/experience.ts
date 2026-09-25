@@ -9,6 +9,17 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
+    role: "Graduate Student Researcher",
+    org: "UMN Visual Intelligence Lab",
+    location: "Minneapolis, MN",
+    start: "June 2026",
+    end: "Present",
+    bullets: [
+      "Developing an Alzheimer’s research assistant that uses hybrid retrieval and Graph-RAG to answer cross-paper questions with traceable, evidence-backed citations.",
+      "Building a literature knowledge graph to visualize supported biological relationships and suggest clearly labeled candidate research connections using graph embeddings and link prediction.",
+    ],
+  },
+  {
     role: "Software Development Engineer",
     org: "Teleperformance",
     location: "India",
